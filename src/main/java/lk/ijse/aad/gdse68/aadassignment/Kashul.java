@@ -1,10 +1,21 @@
 package lk.ijse.aad.gdse68.aadassignment;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-@Qualifier("more-like")
-@Like
+
+@Component
 public class Kashul {
-Food food=new ChikenRole();
+    @Qualifier("more-like")
+    @Like
+    @Autowired
+    private Food food;
 
+    public Kashul(){}
+    @PostConstruct
+    public void init(){
+        food.chooseFood();
+    }
 }
